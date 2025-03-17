@@ -122,11 +122,11 @@ Pushing to GitHub
 
     1. Naviagte to your git initialised repository (PalmerChem_Software)
 
-    2. Change to the development branch "dev"
+    2. Change to the development branch
 
         Change <name> to your name:
 
-        git checkout -b dev-<name>
+        git checkout dev-<name>
 
     3. Add changes made to the staging area using the following code:
 
@@ -221,6 +221,6 @@ Common FAQs/Tips
 
         git checkout -b dev-<name>
 
-    This will switch to that branch should it be there, or make a branch of "main" if not.
+    This will make a branch of "main".
 
     
