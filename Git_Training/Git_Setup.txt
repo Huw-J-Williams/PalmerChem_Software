@@ -28,9 +28,11 @@ Initial Setup
 
         git config --global --list
 
-    8. Move to the development branch by running the following code:
+    8. Move to your own development branch by running the following code:
 
-        git checkout dev
+        Change <name> to your name:
+        
+        git checkout dev-<name>
 
 
 Pulling from GitHub
