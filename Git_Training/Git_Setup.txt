@@ -1,6 +1,37 @@
 GitHub Commands
 ===============
 
+Generating a Personal Access Token
+----------------------------------
+
+    1. Navigate to your GitHub homepage.
+
+    2. Click on your profile in the top right hand side of the screen.
+
+    3. Select "Settings"
+
+    4. Click on "Developer Settings" at the bottom of the left-hand column.
+
+    5. Click "Personal access tokens"
+
+    6. Click "Tokens (classic)"
+
+    7. Click "Generate new token" and select "Generate new token (classic)"
+
+    8. In "Note" give a name for your token (e.g., archie-token).
+
+    9. Select "No expiration" in the "Expiration" drop down menu.
+
+    10. Tick all of the boxes in "Select scopes" (if you tick the parent boxes all of the ones below automatically get checked)
+
+    11. Copy the generated token. Should look like this:
+            tok_1CDh3csE3jo0NnjoyzYM5ghTaIBoqo0zIV1n
+    
+    12. In your home directory in your workspace (aka ARCHIE) make a .txt file to contain this token (e.g., GitHub_Token.txt)
+
+    ***IMPORTANT***
+        This key should NOT be shared, and when cloning repositories you use this instead of your GitHub password
+
 Initial Setup
 --------------
 
@@ -17,18 +48,20 @@ Initial Setup
     5. Open up your bash terminal on the device you will be developing the code on (typically ARCHIE account) and run the following code:
         git clone <URL>
 
-    6. In your newly setup PalmerChem_Software directory run the following two lines of code:
+    6. Enter your GitHub username when prompted, and your GitHub personal access token when asked for your password
+
+    7. In your newly setup PalmerChem_Software directory run the following two lines of code:
 
         Please change text inside the quotation marks (" ")
         
         git config --global user.name "<username>"
         git config --global user.email "<email>"
 
-    7. Verify the newly updated details using:
+    8. Verify the newly updated details using:
 
         git config --global --list
 
-    8. Make and move to your own development branch by running the following code:
+    9. Make and move to your own development branch by running the following code:
 
         Change <name> to your name:
         
