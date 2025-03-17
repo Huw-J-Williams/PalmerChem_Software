@@ -151,4 +151,4 @@ Creating Pull Request
 
     3. Click "New pull request" button
 
-    4. Select the base b
+    4. Select the base button
