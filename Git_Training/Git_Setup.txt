@@ -1,0 +1,142 @@
+GitHub Commands
+===============
+
+Initial Setup
+--------------
+
+    1. Navigate to the PalmerChem_Software repository in the Huw.J.Williams Organisation page:
+        (https://github.com/Huw-J-Williams/PalmerChem_Software)
+
+    2. Click the green "Code" button
+        (< > Code)
+
+    3. Navigate to the HTTPS option below "Clone"
+
+    4. Copy the URL
+
+    5. Open up your bash terminal and run the following code:
+        git clone git@github.com:Huw-J-Williams/PalmerChem_Software.git
+
+    6. In your newly setup PalmerChem_Software directory run the following two lines of code:
+
+        Please change text inside the quotation marks (" ")
+        
+        git config --global user.name "<username>"
+        git config --global user.email "<email>"
+
+    7. Verify the newly updated details using:
+
+        git config --global --list
+
+    8. Move to the development branch by running the following code:
+
+        git checkout dev
+
+
+Pulling from GitHub
+-------------------
+
+    1. Naviagte to your git initialised repository (PalmerChem_Software)
+
+    2. Run the following code:
+    git pull origin main
+
+        NOTE:
+            origin = name of remote repository aka GitHub
+            main = the branch you are pulling from
+
+            At times you may want to pull from the "dev" branch, or another. If so replace
+            main with the branch of the repository you wish to pull from.
+
+Pushing to GitHub
+-----------------
+
+    1. Naviagte to your git initialised repository (PalmerChem_Software)
+
+    2. Change to the development branch "dev"
+
+        git checkout dev
+
+    3. Add changes made to the staging area using the following code:
+
+        Change <file> to the file you wish to add
+        
+        git add <file>
+
+        NOTE:
+            . = adds everything in the current directory to the stage
+            *.py = adds all files with .py extension (works for all extensions, e.g., .txt, .sh)
+
+            You can add multiple files by simply doing:
+
+            git add <file_1> <file_2> ... <file_n>
+
+            To add all changes made in the repository use:
+            git add -A 
+            
+            To add all changes made in a directory use:
+            git add <path_to_dir>
+
+    4. (Optional) Check staging area using the following code:
+
+        git status
+
+    5. Commit the staged changes with a message using the following code:
+
+        Please change text inside the quotation marks (" ")
+
+        git commit -m "Commit Message"
+
+        NOTE:
+            The more precise the commit message, the easier it makes for everyone to understand what happened.
+            For example
+
+            git commit -m "Added RMSE, R2, SDEP and Bias calculation to PerformanceCalculator function"
+
+            is much better than
+
+            git commit -m "Updated PerformanceCalculator"
+
+    6. Push up new code to github using the following code:
+
+        git push origin dev
+
+        NOTE:
+            origin = name of remote repository aka GitHub
+            dev = the branch you are pushing to
+
+            Sometimes you may be asked to pull from the branch first in which case you can run the folloing code
+            before you push up to the repository:
+            
+            git pull origin dev --rebase
+
+            Rebase essentially reapplies your local commits on top of the updated branch. It avoids unnecessary merge 
+            commits and keeps a cleaner history. You may get a conflict message in the terminal. This happens when one of the files
+            you are updating has already been changed since your last pull. To fix this open up the file causing the 
+            issues and resolve the conflicts. 
+            Example:
+
+            #       def example_function():
+            #       <<<<<<<< HEAD
+            #       print("New code which is not in your current codebase")
+            #       ======
+            #       print("Old code which is in your current codebase")
+            #       >>>>>>>> My local changes
+
+            Here you can remove one, combine, or rewrite the line to:
+            #       def example_function():
+            #       print("Code which you want to keep in the function")
+
+            If this happens you then need to add the file back onto the staging area and continue the rebase using:
+                
+                git rebase --continue
+            
+            Or abort using:
+
+                git rebase --skip
+
+            Or, if you want to remove your conflicting commit and continue:
+
+                git rebase --skip
+
+        
