@@ -139,4 +139,14 @@ Pushing to GitHub
 
                 git rebase --skip
 
-        
+Creating Pull Request
+---------------------
+
+    1. Navigate to the PalmerChem_Software repository in the Huw.J.Williams Organisation page:
+        (https://github.com/Huw-J-Williams/PalmerChem_Software)
+
+    2. Click the "Pull Requests" tab
+
+    3. Click "New pull request" button
+
+    4. Select the base b
