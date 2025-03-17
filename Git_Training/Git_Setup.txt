@@ -28,11 +28,11 @@ Initial Setup
 
         git config --global --list
 
-    8. Move to your own development branch by running the following code:
+    8. Make and move to your own development branch by running the following code:
 
         Change <name> to your name:
         
-        git checkout dev-<name>
+        git checkout -b dev-<name>
 
 
 Pulling from GitHub
@@ -50,6 +50,40 @@ Pulling from GitHub
             At times you may want to pull from the "dev" branch, or another. If so replace
             main with the branch of the repository you wish to pull from.
 
+            Sometimes you may be asked to pull from the branch first in which case you can run the folloing code
+            before you push up to the repository:
+            
+            git pull origin dev --rebase
+
+            Rebase essentially reapplies your local commits on top of the updated branch. It avoids unnecessary merge 
+            commits and keeps a cleaner history. You may get a conflict message in the terminal. This happens when one of the files
+            you are updating has already been changed since your last pull. To fix this open up the file causing the 
+            issues and resolve the conflicts. 
+            Example:
+
+            #       def example_function():
+            #       <<<<<<<< HEAD
+            #       print("New code which is not in your current codebase")
+            #       ======
+            #       print("Old code which is in your current codebase")
+            #       >>>>>>>> My local changes
+
+            Here you can remove one, combine, or rewrite the line to:
+            #       def example_function():
+            #       print("Code which you want to keep in the function")
+
+            If this happens you then need to add the file back onto the staging area and continue the rebase using:
+                
+                git rebase --continue
+            
+            Or abort using:
+
+                git rebase --skip
+
+            Or, if you want to remove your conflicting commit and continue:
+
+                git rebase --skip
+
 Pushing to GitHub
 -----------------
 
@@ -57,7 +91,9 @@ Pushing to GitHub
 
     2. Change to the development branch "dev"
 
-        git checkout dev
+        Change <name> to your name:
+
+        git checkout -b dev-<name>
 
     3. Add changes made to the staging area using the following code:
 
@@ -101,45 +137,13 @@ Pushing to GitHub
 
     6. Push up new code to github using the following code:
 
-        git push origin dev
+        git push origin dev-<name>
 
         NOTE:
             origin = name of remote repository aka GitHub
-            dev = the branch you are pushing to
+            dev-<name> = the branch you are pushing to
 
-            Sometimes you may be asked to pull from the branch first in which case you can run the folloing code
-            before you push up to the repository:
-            
-            git pull origin dev --rebase
 
-            Rebase essentially reapplies your local commits on top of the updated branch. It avoids unnecessary merge 
-            commits and keeps a cleaner history. You may get a conflict message in the terminal. This happens when one of the files
-            you are updating has already been changed since your last pull. To fix this open up the file causing the 
-            issues and resolve the conflicts. 
-            Example:
-
-            #       def example_function():
-            #       <<<<<<<< HEAD
-            #       print("New code which is not in your current codebase")
-            #       ======
-            #       print("Old code which is in your current codebase")
-            #       >>>>>>>> My local changes
-
-            Here you can remove one, combine, or rewrite the line to:
-            #       def example_function():
-            #       print("Code which you want to keep in the function")
-
-            If this happens you then need to add the file back onto the staging area and continue the rebase using:
-                
-                git rebase --continue
-            
-            Or abort using:
-
-                git rebase --skip
-
-            Or, if you want to remove your conflicting commit and continue:
-
-                git rebase --skip
 
 Creating Pull Request
 ---------------------
@@ -151,4 +155,39 @@ Creating Pull Request
 
     3. Click "New pull request" button
 
-    4. Select the base button
+    4. Under "base" select the repository you wish to pull changes to (e.g, main)
+
+    5. Under "compare" select the repository you wish to pull changes from (e.g., dev-<name>).
+    
+    You should now see your commit messages, files changed and contributors to this. Check that the changes you want to
+    add to the main repository are present.
+
+    6. Click "Create pull request"
+
+    7. Add a title for your pull request.
+
+    8. Add a description of what you changed and why
+
+    9. Click the green "Create pull request" button.
+
+    10. Notify an admin of the repository. Changes can be approves, rejected and corrections suggested accordingly.
+
+Common FAQs/Tips
+----------------
+
+    1. Before working on code, make sure your version is up to date by running:
+
+        git pull origin main
+
+    2. Make sure you are on the correct branch before pushing any changes up by running:
+        
+        git branch
+
+    3. During pull requests your branch may be deleted meaning that pushing up to that branch will fail.
+    To get around this, before adding and staging any commits run:
+
+        git checkout -b dev-<name>
+
+    This will switch to that branch should it be there, or make a branch of "main" if not.
+
+    
