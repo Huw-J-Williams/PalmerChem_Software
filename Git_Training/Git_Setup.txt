@@ -1,8 +1,8 @@
 GitHub Commands
 ===============
 
-Generating a Personal Access Token
-----------------------------------
+Generating a Personal Access Token (PAT) / Authenticating to GitHub via SSH
+-----------------------------------------------------------------------
 
     1. Navigate to your GitHub homepage.
 
@@ -32,8 +32,25 @@ Generating a Personal Access Token
     ***IMPORTANT***
         This key should NOT be shared, and when cloning repositories you use this instead of your GitHub password
 
+	ALTERNATIVELY, you can instead connect your GitHub account to Archie/your computer via SSH, meaning that you won't need to (ever) enter a PAT:
+	
+	1. Run the command ssh-keygen on an (Archie) terminal. Rename it as you see fit
+
+	2. The command will output a weird picture and a file path (to whatever you named it)
+
+	3. Run cat <file_path>/<file_name>.pub. Copy the entire string that is returned
+
+	4. Navigate to your GitHub settings.
+
+	5. Click on "SSH and GPG Keys", then click "New SSH Key"
+
+	6. Name the key, and paste the previously-copied long string (from Step 3) into the textbox
+
+	7. Go back to the terminal and type ssh -T git@github.com - you should get a response that greets you with your GitHub username. You're now authenticated! 
+
+
 Initial Setup
---------------
+-------------
 
     1. Navigate to the PalmerChem_Software repository in the Huw.J.Williams Organisation page:
         (https://github.com/Huw-J-Williams/PalmerChem_Software)
@@ -41,7 +58,7 @@ Initial Setup
     2. Click the green "Code" button
         (< > Code)
 
-    3. Navigate to the HTTPS option below "Clone"
+    3. Navigate to the HTTPS option below "Clone" (NOTE: If you have authenticated via SSH instead of using a PAT, you'll want to clone using the SSH option instead!!)
 
     4. Copy the URL
 
@@ -117,6 +134,7 @@ Pulling from GitHub
 
                 git rebase --skip
 
+
 Pushing to GitHub
 -----------------
 
@@ -177,7 +195,6 @@ Pushing to GitHub
             dev-<name> = the branch you are pushing to
 
 
-
 Creating Pull Request
 ---------------------
 
@@ -204,6 +221,7 @@ Creating Pull Request
     9. Click the green "Create pull request" button.
 
     10. Notify an admin of the repository. Changes can be approves, rejected and corrections suggested accordingly.
+
 
 Common FAQs/Tips
 ----------------
