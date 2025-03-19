@@ -3,8 +3,7 @@
 echo "Setting up Python environment..."
 
 # Define config directory
-CONFIG_DIR="config"
-ENV_NAME="$CONFIG_DIR/PCenv"
+ENV_NAME="PCenv"
 
 # Define Python version
 PYTHON_VERSION="3.10"
