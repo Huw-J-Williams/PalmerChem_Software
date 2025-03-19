@@ -4,7 +4,10 @@ echo "Updating dependencies before committing..."
 
 # Define config directory
 ENV_NAME="PCenv"
-REQUIREMENTS_FILE="requirements.txt"
+ENV_LOCATION="config"
+ENV_PATH="$ENV_LOCATION/$ENV_NAME"
+
+REQUIREMENTS_FILE="$ENV_LOCATION/requirements.txt"
 
 # Ensure the virtual environment exists
 if [ -d "$ENV_NAME" ]; then
@@ -31,7 +34,7 @@ if [ -d "$ENV_NAME" ]; then
         echo "requirements.txt was already tracked."
     fi
 else
-    echo "Virtual environment '$ENV_NAME' not found! Skipping dependency update."
+    echo "⚠️ Virtual environment '$ENV_NAME' not found in '$ENV_LOCATION'! Skipping dependency update."
 fi
 
 echo "✅ Dependencies updated! Proceeding with commit..."
