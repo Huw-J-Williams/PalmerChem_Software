@@ -2,40 +2,46 @@
 
 echo "Updating dependencies before committing..."
 
-# Define config directory
-ENV_NAME="PCenv"
-ENV_LOCATION="config"
-ENV_PATH="$ENV_LOCATION/$ENV_NAME"
+# Move up two levels from `.git/hooks/` to reach the project root
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")"/../.. && pwd)"
 
-REQUIREMENTS_FILE="$ENV_LOCATION/requirements.txt"
+# Define virtual environment location
+ENV_NAME="PCenv"
+CONFIG_DIR="$REPO_ROOT/config"
+
+ENV_PATH="$CONFIG_DIR/$ENV_NAME"
+REQUIREMENTS_FILE="$CONFIG_DIR/requirements.txt"
+
+echo "🔍 Looking for virtual environment at: $ENV_PATH"
 
 # Ensure the virtual environment exists
-if [ -d "$ENV_NAME" ]; then
-    echo "📦 Freezing pip dependencies into $REQUIREMENTS_FILE..."
+if [ -d "$ENV_PATH" ]; then
+    echo "📦 Virtual environment found! Freezing dependencies into $REQUIREMENTS_FILE..."
     
     # Detect OS and activate the environment accordingly
     if [[ "$OSTYPE" == "darwin"* || "$OSTYPE" == "linux-gnu"* ]]; then
-        source "$ENV_NAME/bin/activate"
+        source "$ENV_PATH/bin/activate"
     elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]; then
-        source "$ENV_NAME/Scripts/activate"
+        source "$ENV_PATH/Scripts/activate"
     else
-        echo "Unsupported OS: $OSTYPE"
+        echo "❌ Unsupported OS: $OSTYPE"
         exit 1
     fi
 
     # Freeze dependencies to config/requirements.txt
     pip freeze > "$REQUIREMENTS_FILE"
+    git add "$REQUIREMENTS_FILE"
 
     # Ensure config/requirements.txt is being tracked
     if ! git ls-files --error-unmatch "$REQUIREMENTS_FILE" >/dev/null 2>&1; then
         git add "$REQUIREMENTS_FILE"
-        echo "requirements.txt is now tracked in config/"
+        echo "✅ requirements.txt is now tracked in config/"
     else
-        echo "requirements.txt was already tracked."
+        echo "✅ requirements.txt was already tracked."
     fi
 else
-    echo "⚠️ Virtual environment '$ENV_NAME' not found in '$ENV_LOCATION'! Skipping dependency update."
+    echo "⚠️ Virtual environment '$ENV_NAME' NOT found at '$ENV_PATH'! Skipping dependency update."
+    exit 1  # Stop execution if the environment is missing
 fi
 
 echo "✅ Dependencies updated! Proceeding with commit..."
-
