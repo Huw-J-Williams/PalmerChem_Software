@@ -2,14 +2,18 @@
 
 echo "Setting up Python environment..."
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
 # Define config directory
+CONFIG_DIR "$SCRIPT_DIR"
 ENV_NAME="PCenv"
+ENV_LOCATION="$SCRIPT_DIR"
+ENV_PATH="$ENV_LOCATION/$ENV_NAME"
 
 # Define Python version
 PYTHON_VERSION="3.10"
 
-# Ensure config directory exists
-mkdir -p "$CONFIG_DIR"
 # Set up virtual environment inside config/
 if [ ! -d "$ENV_NAME" ]; then
     echo "📦 Creating virtual environment '$ENV_NAME'..."

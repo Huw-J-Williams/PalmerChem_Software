@@ -3,9 +3,8 @@
 echo "Updating dependencies before committing..."
 
 # Define config directory
-CONFIG_DIR="config"
-ENV_NAME="$CONFIG_DIR/PCenv"
-REQUIREMENTS_FILE="$CONFIG_DIR/requirements.txt"
+ENV_NAME="PCenv"
+REQUIREMENTS_FILE="requirements.txt"
 
 # Ensure the virtual environment exists
 if [ -d "$ENV_NAME" ]; then
