@@ -16,8 +16,8 @@ PYTHON_VERSION="3.10"
 
 # Set up virtual environment inside config/
 if [ ! -d "$ENV_NAME" ]; then
-    echo "📦 Creating virtual environment '$ENV_NAME'..."
-    python3 -m venv "$ENV_NAME"
+    echo "📦 Creating virtual environment '$ENV_NAME' at '$ENV_LOCATION..."
+    python3 -m venv "$ENV_PATH"
 fi
 
 # Activate virtual environment
@@ -30,7 +30,7 @@ pip install --upgrade pip setuptools wheel
 
 # Install dependencies from config/requirements.txt
 if [ -f "$CONFIG_DIR/requirements.txt" ]; then
-    echo "Installing dependencies from $CONFIG_DIR/requirements.txt..."
+    echo "Installing dependencies from $ENV_LOCATION/requirements.txt..."
     pip install -r "$CONFIG_DIR/requirements.txt"
 else
     echo "No requirements.txt found. Skipping dependency installation."
