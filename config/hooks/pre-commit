@@ -9,37 +9,7 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")"/../.. && pwd)"
 ENV_NAME="PCenv"
 CONFIG_DIR="$REPO_ROOT/config"
 
-# Define hooks location
-HOOKS = "$CONFIG_DIR/hooks"
-GIT_HOOKS_DIR = "../../.git/hooks/"
-
-# Ensure .git/hooks exists
-if [ -d "../../.git" ]; then
-    mkdir -p "$GIT_HOOKS_DIR"
-
-    # Loop through all hook scripts in config/hooks/
-    for hook in "$HOOKS_SOURCE_DIR"/*; do
-        hook_name=$(basename "$hook")  # Extract hook name (e.g., "pre-commit")
-        hook_dest="$GIT_HOOKS_DIR/$hook_name"
-
-        # Create a symlink for each hook if not already linked
-        if [ ! -L "$hook_dest" ]; then
-            echo "🔗 Linking $hook_name hook..."
-            ln -s "$hook" "$hook_dest"
-            chmod +x "$hook_dest"
-        else
-            echo "✅ $hook_name hook is already linked!"
-        fi
-    done
-
-    echo "✅ All Git hooks have been linked successfully!"
-else
-    echo "⚠️ Git directory not found. Ensure you're inside a Git repository."
-fi
-
-
-
-ENV_PATH="$ENV_LOCATION/$ENV_NAME"
+ENV_PATH="$CONFIG_DIR/$ENV_NAME"
 REQUIREMENTS_FILE="$CONFIG_DIR/requirements.txt"
 
 echo "🔍 Looking for virtual environment at: $ENV_PATH"
