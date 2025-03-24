@@ -1,0 +1,45 @@
+Setup the Environment Manager Tutorial
+======================================
+
+Initial Setup
+-------------
+
+    1.  Pull down any changes from the "main" branch on GitHub
+
+    2.  Run the following code in the "config" dir
+
+            . setup.sh
+
+    3.  This should be your environment set up, activate, and ready to go. Use the following commands to install packages:
+
+            pip install _package_           (preferred)
+            
+            conda install _package_
+
+
+Reactivating the environment
+----------------------------
+
+    1.  Run the following code in the "config" dir
+
+            . activate_env.sh
+
+    2.  This should be your environment activated
+
+
+Saving your installed packages
+------------------------------
+
+    1.  Run the following code as you usually would when committing changes:
+
+        git commit -m "ENTER YOUR COMMIT MESSAGE HERE"
+
+        (Saving the installed packages requires no more commands, but requires more documentation for clarity.)
+
+
+        IMPORTANT
+        ---------
+
+        When writing your commit messages remember to add in which packages you installed during these changes.
+        When you have written your commit if you use SHIFT + ENTER then you can get a new line to specify
+        added packages, then close the message with the usual ". 
