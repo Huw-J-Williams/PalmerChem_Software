@@ -23,13 +23,13 @@ fi
 ENV_NAME="PCenv"
 ENV_PATH="$CONFIG_DIR/$ENV_NAME"
 
-# Define Python version
-PYTHON_VERSION="3.10"
+# Define exact Python path to use
+PYTHON_BIN="/opt/software/anaconda/python-3.10.9/bin/python"
 
 # Set up virtual environment inside config/
 if [ ! -d "$ENV_NAME" ]; then
-    echo "📦 Creating virtual environment '$ENV_NAME' at '$CONFIG_DIR..."
-    python3 -m venv "$ENV_PATH"
+    echo "📦 Creating virtual environment '$ENV_NAME' at '$CONFIG_DIR'..."
+    "$PYTHON_BIN" -m venv "$ENV_PATH"
 fi
 
 # Activate virtual environment
