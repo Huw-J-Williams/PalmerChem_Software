@@ -1,4 +1,13 @@
+joblib==1.4.2
 numpy==2.0.2
+pandas==2.2.3
 pillow==11.1.0
+python-dateutil==2.9.0.post0
+pytz==2025.1
 rdkit==2024.9.6
+scikit-learn==1.6.1
+scipy==1.13.1
+six==1.17.0
+threadpoolctl==3.6.0
 tqdm==4.67.1
+tzdata==2025.2
