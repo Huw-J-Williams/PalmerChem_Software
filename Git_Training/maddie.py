@@ -27,7 +27,7 @@ def WaitForJobs(job_id_ls: list, username: str, wait_time: int = 60):
         except subprocess.CalledProcessError as e:
             logging.error(f"Error excecuting squeue command: {e}")
             return False
-        
+
 		## read output and check for jobs in list
         lines = squeue.splitlines() # split q output into lines (equivalent to jobs)
         job_lines = {line.split()[0]: line for line in lines if len(line.split()) > 0} # create dictionary of job_no : line, for populated lines
