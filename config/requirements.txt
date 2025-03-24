@@ -1,4 +1,4 @@
-numpy==2.0.2
-pillow==11.1.0
-rdkit==2024.9.6
-tqdm==4.67.1
+click==8.1.8
+pillow==10.4.0
+svgwrite==1.4.3
+Tree==0.2.4
