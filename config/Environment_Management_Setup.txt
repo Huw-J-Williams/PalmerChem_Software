@@ -41,3 +41,5 @@ Saving your installed packages
         ---------
 
         When writing your commit messages remember to add in which packages you installed during these changes.
+        When you have written your commit if you use SHIFT + ENTER then you can get a new line to specify
+        added packages, then close the message with the usual ". 
