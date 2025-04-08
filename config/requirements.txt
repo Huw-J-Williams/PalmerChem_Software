@@ -1,4 +1,7 @@
-click==8.1.8
-pillow==10.4.0
-svgwrite==1.4.3
-Tree==0.2.4
+numpy==2.0.2
+pillow==11.1.0
+pygame==2.6.1
+rdkit==2024.9.6
+setuptools==78.0.2
+tqdm==4.67.1
+wheel==0.45.1
