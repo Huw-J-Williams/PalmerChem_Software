@@ -8,6 +8,27 @@ This is the documentation for the Palmer Lab ML code project. Its purpose is to 
 - **Classes** should be named using `PascalCase`, wherein the first letter of each word is capitalised, with no paces between words.
 
 ### Single Trailing Underscores
+Single leading underscores (such as in `_some_var` or `_some_func`) denote that an attribute or a method is non-public - that is, it should not be used outside of the class that owns it. Conversely, attributes and methods that lack this leading underscore are public, and so can be freely called throughout the rest of the program. As an example:
+```py
+class ExampleClass():
+
+  def __init__(self, x, y):
+    self._x = x
+    self._y = y
+
+    self.id = self._multiplyXY()
+
+  def _multiplyXY(self):
+    return self._x * self.y 
+
+  def addXY(self):
+    return self._x + self._y
+```
+In the above example, the attributes _x and _y and the method _multiplyXY() are all non-public, and so it would be **wrong** to call them directly outside of the class definition. However, the method addXY is public, and so is intended to be called elsewhere in the program:
+```py
+example = ExampleClass(5, 10)
+print(example.addXY())
+```
 
 ### Defining Functions/Methods
 use self/cls
@@ -30,7 +51,7 @@ avoid static methods?
 
   However, you can import multiple sub-modules from the same module:
   ```py
-  example
+  from sklearn.model_selection import GridSearchCV, PredefinedSplit
   ```
 
 ### Blank Lines
@@ -45,4 +66,5 @@ avoid static methods?
 ## Bits and Bobs
 - if x =/= if x is not None
 - Never use bare `except`, and minimise the amount of code in `try` clauses
-- Explicitly return (when something else does return). Relatedly, return the same number of objects 
+- Explicitly return (when something else does return). Relatedly, return the same number of objects
+- ***Never use global variables***
