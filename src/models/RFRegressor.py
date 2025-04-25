@@ -112,7 +112,7 @@ class RFRegressor():
     
     def _set_hyperparameter_search(
         self, search_kwargs, hyperparameters, estimator, search_seed=None
-                                  ):
+    ):
         """
         Description
         -----------
