@@ -19,7 +19,8 @@ from pathlib import Path
 
 
 class RFRegressor():
-    def __init__(self,
+    def __init__(
+                self,
                  cv_function: Callable,
                  hp_search_function: Callable,
                  cv_kwargs: dict,
@@ -72,7 +73,9 @@ class RFRegressor():
         # Initialising random seed
         self.random_seed = random_seed
 
-    def _set_inner_cv(self, cv_kwargs, cv_seed=None):
+    def _set_inner_cv(
+        self, cv_kwargs, cv_seed=None
+                     ):
         """
         Description
         -----------
@@ -107,7 +110,9 @@ class RFRegressor():
 
         return self.inner_cv, cv_seed
     
-    def _set_hyperparameter_search(self, search_kwargs, hyperparameters, estimator, search_seed=None,):
+    def _set_hyperparameter_search(
+        self, search_kwargs, hyperparameters, estimator, search_seed=None
+                                  ):
         """
         Description
         -----------
