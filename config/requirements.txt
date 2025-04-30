@@ -24,15 +24,14 @@ prompt_toolkit==3.0.51
 psutil==7.0.0
 ptyprocess==0.7.0
 pure_eval==0.2.3
-pyperclip==1.9.0
 Pygments==2.19.1
+pyperclip==1.9.0
 python-dateutil==2.9.0.post0
 pytz==2025.2
 pyzmq==26.4.0
 rdkit==2024.9.6
 scikit-learn==1.6.1
 scipy==1.15.2
-setuptools==78.0.2
 six==1.17.0
 stack-data==0.6.3
 svgwrite==1.4.3
@@ -44,4 +43,3 @@ Tree==0.2.4
 typing_extensions==4.13.2
 tzdata==2025.2
 wcwidth==0.2.13
-wheel==0.45.1
