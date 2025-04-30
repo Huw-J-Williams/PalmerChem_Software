@@ -8,7 +8,7 @@ from sklearn.datasets import load_diabetes, load_breast_cancer
 import pandas as pd
 
 # === Code ===
-def _load_dataset(x: pd.DataFrame, y: pd.DataFrame, metadata: list = []):
+def _loadDataset(x: pd.DataFrame, y: pd.DataFrame, metadata: list = []):
     """
     Takes the data from a Sci-kit dataset (targets [y] and all other data [x]) and converts it into the Palmer format.
     """
@@ -21,7 +21,7 @@ def _load_dataset(x: pd.DataFrame, y: pd.DataFrame, metadata: list = []):
         
     return data
 
-def get_breast_cancer_dataset():
+def getBreastCancerDataset():
     """
     Gets the Sci-kit toy breast_cancer (classification) dataset and converts it into the Palmer format.
 
@@ -38,11 +38,11 @@ def get_breast_cancer_dataset():
 
     """
     x, y = load_breast_cancer(as_frame = True, return_X_y = True) # Gets the breast cancer dataset as a DateFrame
-    data = _load_dataset(x, y) # Convert it into the Palmer format
+    data = _loadDataset(x, y) # Convert it into the Palmer format
 
     return data
 
-def get_diabetes_dataset(metadata = []):
+def getDiabetesDataset(metadata = []):
     """
     Gets the Sci-kit toy diabetes (regression) dataset and converts it into the Palmer format, ensuring that the
     specified columns in `metadata` are treated as such.
@@ -67,6 +67,6 @@ def get_diabetes_dataset(metadata = []):
         A dataframe of diabetes data in the Palmer format ([id, <[metadata]>, [features], target])
     """
     x, y = load_diabetes(as_frame = True, return_X_y = True) # Gets the diabetes dataset as a DateFrame
-    data = _load_dataset(x, y, metadata) # Convert it into the Palmer format
+    data = _loadDataset(x, y, metadata) # Convert it into the Palmer format
 
     return data
