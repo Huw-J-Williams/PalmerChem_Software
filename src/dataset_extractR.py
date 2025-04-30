@@ -9,9 +9,7 @@ import pandas as pd
 
 # === Code ===
 def _loadDataset(x: pd.DataFrame, y: pd.DataFrame, metadata: list = []):
-    """
-    Takes the data from a Sci-kit dataset (targets [y] and all other data [x]) and converts it into the Palmer format.
-    """
+    """Takes the data from a Sci-kit dataset (targets [y] and all other data [x]) and converts it into the Palmer format."""
     original_col_names = list(x) # Gets a list of all the column names
     col_names = {col: f'X_{col}' for col in original_col_names if col not in metadata} # Converts all columns not in the metadata list into X_<col_name> (i.e. feature columns)
     x = x.rename(columns = col_names) # Renames the feature columns to X_<col_name>
