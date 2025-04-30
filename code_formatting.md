@@ -2,7 +2,7 @@ This is the documentation for the Palmer Lab ML code project. Its purpose is to 
 
 This is a living document that will update with lab and general conventions, and is open to changes and discussion from all involved parties.
 
-## RECENT CHANGES since v0
+### RECENT CHANGES since v0
 **Current Version:** v1.0.1
 Any changes since the last update will go here, for those that simply want to refresh themselves on the new stuff. As this is the first full version, everything is new though! :D
 
