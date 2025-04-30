@@ -1,4 +1,10 @@
-This is the documentation for the Palmer Lab ML code project. Its purpose is to provide an easy-to-follow set of guidelines for the standardisation of any code written for the project, specifically in areas where automatic formatting packages, such as Black (https://github.com/psf/black), will be unable to. The structure, and contents, of this document are derived primarily from PEP 8 (https://peps.python.org/pep-0008/), with modifications/deviations made based on lab-wide preference. 
+This is the documentation for the Palmer Lab ML code project. Its purpose is to provide an easy-to-follow set of guidelines for the standardisation of any code written for the project, specifically in areas where automatic formatting packages, such as Black (https://github.com/psf/black), will be unable to. The structure, and contents, of this document are derived primarily from PEP 8 (https://peps.python.org/pep-0008/), with modifications/deviations made based on lab-wide preference.
+
+This is a living document that will update with lab and general conventions, and is open to changes and discussion from all involved parties.
+
+## RECENT CHANGES since v0
+**Current Version:** v1.0.1
+Any changes since the last update will go here, for those that simply want to refresh themselves on the new stuff. As this is the first full version, everything is new though! :D
 
 ## Naming and Defining Conventions
 ### Names
