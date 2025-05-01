@@ -1,2 +1,4 @@
 # Ignore vitrual environment
 config/PCenv/
+*csv.
+*.json
