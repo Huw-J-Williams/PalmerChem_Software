@@ -10,7 +10,7 @@ Any changes since the last update will go here, for those that simply want to re
 ### Names
 - **Variables** should be named in lower case, with underscores between words (known as `snake_case`).
 - **Constants** (variables who's value does _not_ change throughout the running of the program) should be named in UPPER CASE, with underscores between words (as in `SCREAMING_SNAKE_CASE`).
-- **Functions** should be named with `camelCase`, wherein the first letter of the first word is lower case, while the first letter of all subsequent words is capitalised, with no spaces between words. In the case of a single-word function, it will all be lower case.
+- **Functions/Methods** should be named with `camelCase`, wherein the first letter of the first word is lower case, while the first letter of all subsequent words is capitalised, with no spaces between words. In the case of a single-word function/method, it will all be lower case.
 - **Classes** should be named using `PascalCase`, wherein the first letter of each word is capitalised, with no paces between words.
 
 ### Single Trailing Underscores
@@ -44,7 +44,7 @@ def someMethod(self, a, b):
   self._x += a
   self._y += b
 ```
-Conversely, when working with class methods, they must first be 'decorated' by an `@classmethod` the line above the `def`, and the first argument should be `cls`. Then, as with `self` in instance-specific functions, `cls` will be used to refer to the _class_ throughout the rest of the method:
+Conversely, when working with class methods, they must first be 'decorated' by an `@classmethod` the line above the `def`, and the first argument should be `cls`. Then, as with `self` in instance-specific methods, `cls` will be used to refer to the _class_ throughout the rest of the method:
 ```py
 @classmethod
 def someClassMethod(cls):
@@ -189,7 +189,7 @@ The sections are as follows:
   ------
   TypeError
     If a float is provided.
-- **Notes** - Extra notes on the function, such as the theory, formulae or references.
+- **Notes** - Extra notes on the Class/function/method, such as the theory, formulae or references.
 
 Classes should be documented beneath the Class definition, _not_ beneath the `__init__` definition (so that the class gets assigned the `__doc__` attribute correctly).
 
