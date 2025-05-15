@@ -33,7 +33,7 @@ def getBreastCancerDataset():
     DataFrame
         A dataframe of breast cancer data in the Palmer format ([id, [features], target])
     """
-    x, y = load_breast_cancer(as_frame = True, return_X_y = True) # Gets the breast cancer dataset as a DateFrame
+    x, y = load_breast_cancer(as_frame = True, return_X_y = True) # Gets the breast cancer dataset as a DataFrame
     data = _loadDataset(x, y) # Convert it into the Palmer format
 
     return data
@@ -61,7 +61,7 @@ def getDiabetesDataset(metadata = []):
     DataFrame
         A dataframe of diabetes data in the Palmer format ([id, <[metadata]>, [features], target])
     """
-    x, y = load_diabetes(as_frame = True, return_X_y = True) # Gets the diabetes dataset as a DateFrame
+    x, y = load_diabetes(as_frame = True, return_X_y = True) # Gets the diabetes dataset as a DataFrame
     data = _loadDataset(x, y, metadata) # Convert it into the Palmer format
 
     return data
