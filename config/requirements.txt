@@ -31,9 +31,9 @@ python-dateutil==2.9.0.post0
 pytz==2025.2
 pyzmq==26.4.0
 rdkit==2024.9.6
+setuptools==78.0.2
 scikit-learn==1.6.1
 scipy==1.15.2
-setuptools==78.0.2
 six==1.17.0
 stack-data==0.6.3
 svgwrite==1.4.3
