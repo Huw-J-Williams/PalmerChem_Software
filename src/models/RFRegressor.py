@@ -72,6 +72,11 @@ class RFRegressor():
 
         # Initialising random seed
         self.random_seed = random_seed
+        if self.random_seed is None:
+            self.random_seed = rand.randint(0, 2**31)
+
+        rand.seed(self.random_seed)
+        np.random.seed(self.random_seed)
 
     def _set_inner_cv(
         self, cv_kwargs, cv_seed=None
@@ -275,6 +280,8 @@ class RFRegressor():
         rf_seed = rand.randint(0, 2**31)        
 
         # Doing the train/test split
+        rf_seed = self.random_seed if self.random_seed is not None else rand.randint(0, 2**31)
+
         feat_tr, feat_te, tar_tr, tar_te = train_test_split(
             features, targets, test_size=test_size, random_state=rf_seed
         )
@@ -296,7 +303,7 @@ class RFRegressor():
         tar_te = tar_te.values.ravel() if isinstance(tar_te, pd.DataFrame) else tar_te
 
         # Initialising the RandomForestRegressor model
-        rfr = RandomForestRegressor()
+        rfr = RandomForestRegressor(random_state=self.random_seed)
 
         self.inner_cv, kfold_rng = self._set_inner_cv(cv_kwargs=self.cv_kwargs, cv_seed=cv_seed)
 
@@ -429,9 +436,16 @@ class RFRegressor():
 
         # Setting seeds for each process
         if cv_seeds is None:
-            cv_seeds = [rand.randint(0, 2**31) for _ in range(n_resamples)]
+            if self.random_seed is not None:
+                cv_seeds = [self.random_seed + i for i in range(n_resamples)]
+            else:
+                cv_seeds = [rand.randint(0, 2**31) for _ in range(n_resamples)]
+
         if search_seeds is None:
-            search_seeds = [rand.randint(0, 2**31) for _ in range(n_resamples)]
+            if self.random_seed is not None:
+                search_seeds = [self.random_seed + 1000 + i for i in range(n_resamples)]
+            else:
+                search_seeds = [rand.randint(0, 2**31) for _ in range(n_resamples)]
 
         assert len(cv_seeds) == n_resamples, "cv_seeds must match n_resamples"
         assert len(search_seeds) == n_resamples, "search_seeds must match n_resamples"
@@ -443,7 +457,7 @@ class RFRegressor():
         else:
             final_rf_seed = rand.randint(0, 2**31)
 
-
+#############################################
         if isinstance(data, str):
             data = pd.read_csv(data, index_col="ID")
 
@@ -454,6 +468,7 @@ class RFRegressor():
             columns_to_drop = [target_column]
         features = data.drop(columns=columns_to_drop)
         targets = data[[target_column]]
+#############################################
 
         if save_interval_models:
             self.interval_path = Path(f"{save_path}/all_resample_data/")
